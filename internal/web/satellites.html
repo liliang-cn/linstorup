@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 2: Configure Satellites</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl">
+            <h1 class="text-3xl font-bold mb-2 text-gray-900">Step 2: Configure Satellite Nodes</h1>
+            <p class="text-md mb-6">Enter the IP addresses for each Satellite node. You can add or remove fields as needed.</p>
+            
+            <form action="/setup/satellites" method="post">
+                <div id="satellite-fields" class="space-y-4 mb-4">
+                    <!-- Initial input field -->
+                    <div class="flex items-center space-x-2">
+                        <input type="text" name="satellite_ips[]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., 192.168.1.101" required>
+                        <button type="button" onclick="removeSatelliteField(this)" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mt-6">
+                    <button type="button" onclick="addSatelliteField()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        Add Another Satellite
+                    </button>
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        Next: Review & Deploy
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function addSatelliteField() {
+            const container = document.getElementById('satellite-fields');
+            const newField = document.createElement('div');
+            newField.className = 'flex items-center space-x-2';
+            newField.innerHTML = `
+                <input type="text" name="satellite_ips[]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., 192.168.1.102" required>
+                <button type="button" onclick="removeSatelliteField(this)" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                    Remove
+                </button>
+            `;
+            container.appendChild(newField);
+        }
+
+        function removeSatelliteField(button) {
+            // Prevent removing the last field
+            if (document.querySelectorAll('#satellite-fields > div').length > 1) {
+                button.parentElement.remove();
+            }
+        }
+    </script>
+</body>
+</html>

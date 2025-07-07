@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 4: Review and Deploy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl">
+            <h1 class="text-3xl font-bold mb-4 text-gray-900">Step 4: Review Configuration</h1>
+            <p class="text-md mb-6">Please review the configuration below. If everything is correct, click the deploy button to start the LINSTOR cluster installation.</p>
+            
+            <div class="bg-gray-50 p-4 rounded-md mb-6">
+                <h2 class="text-xl font-semibold mb-2">Controller Node</h2>
+                <p class="text-gray-700">{{.ControllerIP}}</p>
+
+                <h2 class="text-xl font-semibold mt-4 mb-2">Satellite Nodes</h2>
+                <ul class="list-disc list-inside text-gray-700">
+                    {{range .SatelliteIPs}}
+                        <li>{{.}}</li>
+                    {{end}}
+                </ul>
+
+                <h2 class="text-xl font-semibold mt-4 mb-2">Optional Components</h2>
+                <ul class="list-disc list-inside text-gray-700">
+                    {{if .InstallGUI}}<li>LINSTOR GUI</li>{{end}}
+                    {{if .InstallReactor}}<li>DRBD Reactor</li>{{end}}
+                    {{if not .InstallGUI}}{{if not .InstallReactor}}<li>None</li>{{end}}{{end}}
+                </ul>
+            </div>
+
+            <div class="flex items-center justify-end">
+                <form action="/deploy" method="post">
+                    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        Deploy Now
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

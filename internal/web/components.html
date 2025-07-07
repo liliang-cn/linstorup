@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 3: Optional Components</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
+            <h1 class="text-3xl font-bold mb-2 text-gray-900">Step 3: Select Optional Components</h1>
+            <p class="text-md mb-6">Select any additional components you wish to install on the Controller node.</p>
+            
+            <form action="/setup/components" method="post">
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="install_gui" name="install_gui" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="install_gui" class="ml-3 block text-sm font-medium text-gray-700">LINSTOR GUI</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="install_reactor" name="install_reactor" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="install_reactor" class="ml-3 block text-sm font-medium text-gray-700">DRBD Reactor</label>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-end mt-8">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        Next: Review & Deploy
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 1: Configure Controller</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
+            <h1 class="text-3xl font-bold mb-2 text-gray-900">Step 1: Configure Controller Node</h1>
+            <p class="text-md mb-6">Please provide the IP address of the LINSTOR Controller node.</p>
+            
+            <form action="/setup/controller" method="post">
+                <div class="mb-4">
+                    <label for="controller_ip" class="block text-gray-700 text-sm font-bold mb-2">Controller IP Address:</label>
+                    <input type="text" id="controller_ip" name="controller_ip" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., 192.168.1.100" required>
+                </div>
+                
+                <div class="flex items-center justify-end">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        Next: Configure Satellites
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
